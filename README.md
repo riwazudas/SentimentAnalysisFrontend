@@ -109,12 +109,5 @@ A full-stack sentiment analysis application that predicts whether a user's text 
     ```bash
     firebase deploy
     ```
----
 
---
-
-## 🙌 Contribution
-
-Feel free to fork, clone, and contribute!  
-Bug reports and pull requests are welcome.
 

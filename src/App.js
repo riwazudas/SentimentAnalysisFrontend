@@ -11,7 +11,8 @@ const App = () => {
   const [showStartupModal, setShowStartupModal] = useState(true);
 
   // --- API Configuration ---
-  const API_URL = '/api/predict';
+  const API_URL = process.env.REACT_APP_API_URL;
+
 
   // Trigger entry animation on component mount
   useEffect(() => {
@@ -60,11 +61,11 @@ const App = () => {
   const ResultDisplay = ({ prediction }) => {
     if (!prediction) return null;
     const { prediction: sentiment, confidence } = prediction;
-    const isPositive = sentiment === 'Positive';
+    const isPositive = prediction.sentiment === 'Positive';
     const cardColor = isPositive ? 'bg-green-100 border-green-500' : 'bg-red-100 border-red-500';
     const textColor = isPositive ? 'text-green-800' : 'text-red-800';
     const emoji = isPositive ? '😊' : '😞';
-
+    
     return (
       <div className={`mt-6 p-5 border-l-4 rounded-r-lg shadow-lg ${cardColor} ${textColor} result-card`}>
         <h3 className="text-xl font-bold flex items-center mb-2">
@@ -87,7 +88,7 @@ const App = () => {
       const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Review: review }),
+        body: JSON.stringify({ "review": review }),
       });
       if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
       const data = await response.json();

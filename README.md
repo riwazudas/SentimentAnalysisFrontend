@@ -40,7 +40,7 @@ A full-stack sentiment analysis application that predicts whether a user's text 
 │   ├── postcss.config.js
 │   └── package.json
 └── README.md
-
+```
 
 
 ## 🛠️ Local Development Setup
